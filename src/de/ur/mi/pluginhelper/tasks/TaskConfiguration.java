@@ -1,4 +1,4 @@
-package de.ur.mi.pluginhelper;
+package de.ur.mi.pluginhelper.tasks;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
@@ -14,9 +14,12 @@ public class TaskConfiguration {
 
     private static final String HANDOUT_URL_KEY = "HANDOUT_URL";
     private static final String HANDOUT_URL_DEFAULT_VALUE = "https://github.com/esolneman/OOP-Helper-Handout-Template";
+    private static final String TASK_TITLE_KEY = "TASK";
+    private static final String TASK_TITLE_DEFAULT_VALUE = "Demo Task";
     private static final String DEFAULT_CONFIGURATION_NAME = ".task";
 
     private String handoutURL;
+    private String taskTitle;
 
     private TaskConfiguration() {
     }
@@ -27,6 +30,14 @@ public class TaskConfiguration {
 
     public String getHandoutURL() {
         return handoutURL;
+    }
+
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
+    }
+
+    public String getTaskTitle() {
+        return taskTitle;
     }
 
     public static TaskConfiguration loadFrom() {
@@ -50,7 +61,9 @@ public class TaskConfiguration {
         TaskConfiguration config = new TaskConfiguration();
         try {
             properties.load(new FileInputStream((input)));
+            String taskTitle = properties.getProperty(TASK_TITLE_KEY, TASK_TITLE_DEFAULT_VALUE);
             String handoutURL = properties.getProperty(HANDOUT_URL_KEY, HANDOUT_URL_DEFAULT_VALUE);
+            config.setTaskTitle(taskTitle);
             config.setHandoutURL(handoutURL);
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,8 +73,9 @@ public class TaskConfiguration {
 
     @Override
     public String toString() {
-        String out = "TaskConfiguration:\n" +
-                "Handout-URL:\t" + this.getHandoutURL();
+        String out = "TaskConfiguration:" +
+                "\nTask:\t" + this.getTaskTitle() +
+                "\nHandout-URL:\t" + this.getHandoutURL();
         return out;
     }
 }
