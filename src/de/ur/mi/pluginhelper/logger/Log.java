@@ -17,8 +17,12 @@ public class Log {
         this.id = id;
         this.logFile = logFile;
         this.dataFile = dataFile;
-        prepareLogFile();
-        createDataFile();
+        if (!logFile.exists()) {
+            prepareLogFile();
+        }
+        if (!dataFile.exists()) {
+            createDataFile();
+        }
     }
 
     public String getId() {
@@ -30,7 +34,7 @@ public class Log {
     }
 
     private void prepareLogFile() {
-        if(logFile.exists()) {
+        if (logFile.exists()) {
             return;
         }
         try {
@@ -42,7 +46,7 @@ public class Log {
     }
 
     private void createDataFile() {
-        if(dataFile.exists()) {
+        if (dataFile.exists()) {
             return;
         }
         Timestamp now = new Timestamp(System.currentTimeMillis());

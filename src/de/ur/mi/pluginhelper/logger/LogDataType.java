@@ -1,6 +1,6 @@
 package de.ur.mi.pluginhelper.logger;
 
-public enum DataType {
+public enum LogDataType {
     IDE,
     PLUGIN,
     USER,

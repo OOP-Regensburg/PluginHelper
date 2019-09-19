@@ -25,7 +25,7 @@ Die Konfigurationsdatei wird über die Methode `TaskConfiguration.loadFrom(Strin
 
 ### Logging
 
-Mit Hilfe der  Klassen `LogManager` und `Log` können zur Laufzeit Logdateien erstellt werden, die im Benutzerverzeichnis des Anwenders persistiert werden. Der `LogManager` erlaubt das Erstellen neuer (`LogManager.createNewLog`) sowie das Laden existierende *Logs*, die über über die Klasse `Log` repräsentiert werden. Einzelne Einträge im *Log* können auf Basis der Klasse `LogData` erstellt werden. Zu jeder Logdatei wird automatisch eine zusätzliche Datei mit Metainformationen zur Systemumgebung erstellt.
+Mit Hilfe der  Klassen `LogManager` und `Log` können zur Laufzeit Logdateien erstellt werden, die im Benutzerverzeichnis des Anwenders persistiert werden. Der `LogManager` erlaubt das Erstellen neuer (`LogManager.createLog`) sowie das Laden existierende *Logs*, die über über die Klasse `Log` repräsentiert werden. Einzelne Einträge im *Log* können auf Basis der Klasse `LogData` erstellt werden. Zu jeder Logdatei wird automatisch eine zusätzliche Datei mit Metainformationen zur Systemumgebung erstellt.
 
 Alle Logdateien werden im Ordner `.OOP-Plugin-Logdaten` des *Home*-Verzeichnis des aktuellen Nutzers angelegt. 
 
@@ -41,7 +41,7 @@ Die `LogData`-Klasse speichert Informationen eines einzelnen Eintrags und erzeug
 #### Beispiel: Erstellen eines neuen Logs und eines Logeintrags
 
 ```
-Log log = LogManager.createNewLog();
+Log log = LogManager.createLog();
 Timestamp ts = new Timestamp(System.currentTimeMillis());
 LogData data = new LogData(ts, DataType.CUSTOM,"Test", "{\"origin\": \"demo\"}");
 log.log(data);

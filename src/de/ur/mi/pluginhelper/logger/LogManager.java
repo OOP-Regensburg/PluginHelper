@@ -7,22 +7,20 @@ public class LogManager {
 
     private static final String DEFAULT_LOG_FOLDER = ".OOP-Plugin-Logdaten";
 
-    public static Log createNewLog() {
+    public static Log createLog() {
         String id = UUID.randomUUID().toString();
+        return getLog(id);
+    }
+
+    public static Log openLog(String id) {
+        return getLog(id);
+    }
+
+    private static Log getLog(String id) {
         File logPath = getLogPath();
         File logFile = new File(logPath, id+".log");
         File dataFile = new File(logPath, id+".data");
         return new Log(id, logFile, dataFile);
-    }
-
-    public static Log openLog(String id) {
-        File logPath = getLogPath();
-        File logFile = new File(logPath, id+".log");
-        File dataFile = new File(logPath, id+".data");
-        if(logFile.exists() && dataFile.exists()) {
-            return new Log(id, logFile, dataFile);
-        }
-        return null;
     }
 
     private static File getLogPath() {

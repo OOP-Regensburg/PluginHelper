@@ -6,11 +6,11 @@ public class LogData {
 
     public static final String DATA_HEADER = "timestamp,type,label,payload";
     private final Timestamp timestamp;
-    private final DataType type;
+    private final LogDataType type;
     private final String label;
     private final String payload;
 
-    public LogData(Timestamp timestamp, DataType type, String label, String payload) {
+    public LogData(Timestamp timestamp, LogDataType type, String label, String payload) {
         this.timestamp = timestamp;
         this.type = type;
         this.label = label;
@@ -21,7 +21,7 @@ public class LogData {
         return timestamp;
     }
 
-    public DataType getType() {
+    public LogDataType getType() {
         return type;
     }
 
