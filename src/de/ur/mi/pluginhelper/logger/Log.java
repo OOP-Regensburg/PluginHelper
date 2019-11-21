@@ -10,11 +10,13 @@ import java.util.Properties;
 public class Log {
 
     private String id;
+    private String experiment;
     private File logFile;
     private File dataFile;
 
-    public Log(String id, File logFile, File dataFile) {
+    public Log(String id, String experiment, File logFile, File dataFile) {
         this.id = id;
+        this.experiment = experiment;
         this.logFile = logFile;
         this.dataFile = dataFile;
         if (!logFile.exists()) {
@@ -27,6 +29,10 @@ public class Log {
 
     public String getId() {
         return id;
+    }
+
+    public String getExperimentName() {
+        return  experiment;
     }
 
     public void log(LogData data) {
@@ -42,6 +48,10 @@ public class Log {
         Timestamp now = new Timestamp(System.currentTimeMillis());
         LogData data = new LogData(now, sessionID, type, label, payload);
         log(data);
+    }
+
+    public File getLogFile() {
+        return logFile;
     }
 
     private void prepareLogFile() {
@@ -82,7 +92,7 @@ public class Log {
                 addressBuilder.append(String.format("%02X%s", address[i], (i < address.length - 1) ? "-" : ""));
             }
             return addressBuilder.toString();
-        } catch (SocketException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "unknown";
