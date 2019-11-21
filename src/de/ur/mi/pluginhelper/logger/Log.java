@@ -33,6 +33,17 @@ public class Log {
         writeLineToFile(data.toCSV(), logFile);
     }
 
+    public void log(Timestamp timestamp, String sessionID, LogDataType type, String label, String payload) {
+        LogData data = new LogData(timestamp, sessionID, type, label, payload);
+        log(data);
+    }
+
+    public void log(String sessionID, LogDataType type, String label, String payload) {
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        LogData data = new LogData(now, sessionID, type, label, payload);
+        log(data);
+    }
+
     private void prepareLogFile() {
         if (logFile.exists()) {
             return;

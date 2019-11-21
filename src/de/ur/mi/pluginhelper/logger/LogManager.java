@@ -1,11 +1,11 @@
 package de.ur.mi.pluginhelper.logger;
 
+import de.ur.mi.pluginhelper.config.PluginConfiguration;
+
 import java.io.File;
 import java.util.UUID;
 
 public class LogManager {
-
-    private static final String DEFAULT_LOG_FOLDER = ".OOP-Plugin-Logdaten";
 
     public static Log createLog() {
         String id = UUID.randomUUID().toString();
@@ -25,11 +25,15 @@ public class LogManager {
 
     private static File getLogPath() {
         File userDir = new File(System.getProperty("user.home"));
-        File logPath = new File(userDir, DEFAULT_LOG_FOLDER);
-        if(!logPath.exists()) {
-            logPath.mkdir();
+        File dataPath = new File(userDir, PluginConfiguration.DEFAULT_DATA_FOLDER);
+        if(!dataPath.exists()) {
+            dataPath.mkdir();
         }
-        return logPath;
+        return dataPath;
+    }
+
+    private static void syncLog(Log log) {
+
     }
 
 }
