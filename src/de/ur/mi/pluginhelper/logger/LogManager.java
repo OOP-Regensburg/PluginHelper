@@ -34,6 +34,7 @@ public class LogManager {
         });
     }
 
+    // TODO: Remove experiment parameter from method
     private static Log getLog(String id, String experiment) {
         File logPath = getLogPath();
         File logFile = new File(logPath, id + ".log");

@@ -8,7 +8,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.File;
-import java.io.IOException;
 
 
 public class UploadClient {
@@ -17,7 +16,6 @@ public class UploadClient {
     private String uploadURL = DEFAULT_UPLOAD_URL;
 
     public UploadClient() {
-
     }
 
     public UploadClient(String uploadURL) {
@@ -25,21 +23,21 @@ public class UploadClient {
     }
 
     public void uploadFile(File file, String experimentID, String userID, String sessionID, UploadClientListener listener) {
-        CloseableHttpClient client = HttpClientBuilder.create().build();
-        HttpPost post = new HttpPost(uploadURL);
-        MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-        builder.addTextBody("experiment", experimentID);
-        builder.addTextBody("user", userID);
-        builder.addTextBody("session", sessionID);
-        builder.addBinaryBody("file", file);
-        HttpEntity multipart = builder.build();
-        post.setEntity(multipart);
-
         try {
+            CloseableHttpClient client = HttpClientBuilder.create().build();
+            HttpPost post = new HttpPost(uploadURL);
+            MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+            builder.addTextBody("experiment", experimentID);
+            builder.addTextBody("user", userID);
+            builder.addTextBody("session", sessionID);
+            builder.addBinaryBody("file", file);
+            HttpEntity multipart = builder.build();
+            post.setEntity(multipart);
             CloseableHttpResponse response = client.execute(post);
-            listener.onUploadFinished();
+            response.close();
             client.close();
-        } catch (IOException e) {
+            listener.onUploadFinished();
+        } catch (Exception e) {
             listener.onUploadFailed();
             e.printStackTrace();
         }

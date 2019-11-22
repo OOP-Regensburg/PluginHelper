@@ -10,4 +10,12 @@ public class UserDialogManager {
                JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
         return UserResponse.values()[result];
     }
+
+    public static JDialog createStatusDialog(String msg, String title) {
+        JFrame frame = new JFrame(title);
+        JOptionPane pane = new JOptionPane();
+        pane.setMessage(msg);
+        JDialog dialog = pane.createDialog(frame, title);
+        return  dialog;
+    }
 }

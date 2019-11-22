@@ -76,6 +76,7 @@ public class Log {
         properties.setProperty("Created At", String.valueOf(now));
         properties.setProperty("Hardware Identifier", hardwareAddress);
         properties.setProperty("Identifier", id);
+        properties.setProperty("Experiment", experiment);
         try {
             dataFile.createNewFile();
             properties.store(new FileOutputStream(dataFile), null);
