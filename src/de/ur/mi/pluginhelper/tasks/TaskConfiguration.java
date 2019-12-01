@@ -2,6 +2,7 @@ package de.ur.mi.pluginhelper.tasks;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectManager;
+import org.apache.commons.lang.NotImplementedException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,6 +45,12 @@ public class TaskConfiguration {
         return loadFrom(DEFAULT_CONFIGURATION_NAME);
     }
 
+    public static TaskConfiguration loadFrom(Project project) {
+        File configFile = getConfigurationFile(project, DEFAULT_CONFIGURATION_NAME);
+        TaskConfiguration config = createConfiguration(configFile);
+        return config;
+    }
+
     public static TaskConfiguration loadFrom(String fileName) {
         File configFile = getConfigurationFile(fileName);
         TaskConfiguration config = createConfiguration(configFile);
@@ -52,6 +59,11 @@ public class TaskConfiguration {
 
     private static File getConfigurationFile(String fileName) {
         Project project = ProjectManager.getInstance().getOpenProjects()[0];
+        Path configFilePath = Paths.get(project.getBasePath(), fileName);
+        return configFilePath.toFile();
+    }
+
+    private static File getConfigurationFile(Project project, String fileName) {
         Path configFilePath = Paths.get(project.getBasePath(), fileName);
         return configFilePath.toFile();
     }
