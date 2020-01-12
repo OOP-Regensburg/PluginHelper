@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class LogData {
 
-    public static final String DATA_HEADER = "timestamp,type,label,payload";
+    public static final String DATA_HEADER = "timestamp,session,type,label,payload";
     private final Timestamp timestamp;
     private final String sessionID;
     private final LogDataType type;
