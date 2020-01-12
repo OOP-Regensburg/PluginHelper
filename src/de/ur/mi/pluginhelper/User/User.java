@@ -19,7 +19,7 @@ public class User {
 
     private User(File userFile) {
         initFromFile(userFile);
-        sessionID = UUID.randomUUID().toString();
+        updateSessionID();
     }
 
     private void initFromFile(File userFile) {
@@ -38,6 +38,10 @@ public class User {
 
     public String getSessionID() {
         return sessionID;
+    }
+
+    public void updateSessionID() {
+        sessionID = UUID.randomUUID().toString();
     }
 
     public static User getLocalUser() {
