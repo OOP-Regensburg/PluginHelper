@@ -1,10 +1,9 @@
-package de.ur.mi.pluginhelper.logger;
+package main.java.de.ur.mipluginhelper.logger;
 
 import java.io.*;
 import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.sql.Timestamp;
-import java.util.Date;
+import java.util.Enumeration;
 import java.util.Properties;
 
 public class Log {
@@ -87,7 +86,8 @@ public class Log {
 
     private String getHardwareAddress() {
         try {
-            byte[] address = NetworkInterface.getNetworkInterfaces().nextElement().getHardwareAddress();
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            byte[] address = interfaces.nextElement().getHardwareAddress();
             StringBuilder addressBuilder = new StringBuilder();
             for (int i = 0; i < address.length; i++) {
                 addressBuilder.append(String.format("%02X%s", address[i], (i < address.length - 1) ? "-" : ""));
@@ -95,8 +95,8 @@ public class Log {
             return addressBuilder.toString();
         } catch (Exception e) {
             e.printStackTrace();
+            return "unknown";
         }
-        return "unknown";
     }
 
     private void writeLineToFile(String line, File file) {

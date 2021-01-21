@@ -1,4 +1,4 @@
-package de.ur.mi.pluginhelper.logger;
+package main.java.de.ur.mipluginhelper.logger;
 
 public interface SyncProgressListener {
 

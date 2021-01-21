@@ -1,6 +1,6 @@
-package de.ur.mi.pluginhelper.User;
+package main.java.de.ur.mipluginhelper.User;
 
-import de.ur.mi.pluginhelper.config.PluginConfiguration;
+import main.java.de.ur.mipluginhelper.config.PluginConfiguration;
 
 import java.io.File;
 import java.io.FileInputStream;

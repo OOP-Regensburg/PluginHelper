@@ -1,4 +1,4 @@
-package de.ur.mi.pluginhelper.ui;
+package main.java.de.ur.mipluginhelper.ui;
 
 public enum UserResponse {
     ACCEPT,

@@ -1,9 +1,8 @@
-package de.ur.mi.pluginhelper.com;
+package main.java.de.ur.mipluginhelper.com;
 
 public interface UploadClientListener {
 
     public void onUploadFinished();
     public void onUploadFailed();
-
 
 }

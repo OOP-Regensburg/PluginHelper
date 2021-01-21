@@ -1,9 +1,9 @@
-package de.ur.mi.pluginhelper.logger;
+package main.java.de.ur.mipluginhelper.logger;
 
-import de.ur.mi.pluginhelper.User.User;
-import de.ur.mi.pluginhelper.com.UploadClient;
-import de.ur.mi.pluginhelper.com.UploadClientListener;
-import de.ur.mi.pluginhelper.config.PluginConfiguration;
+import main.java.de.ur.mipluginhelper.User.User;
+import main.java.de.ur.mipluginhelper.com.UploadClient;
+import main.java.de.ur.mipluginhelper.com.UploadClientListener;
+import main.java.de.ur.mipluginhelper.config.PluginConfiguration;
 
 import java.io.File;
 import java.util.UUID;

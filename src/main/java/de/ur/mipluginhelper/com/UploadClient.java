@@ -1,4 +1,4 @@
-package de.ur.mi.pluginhelper.com;
+package main.java.de.ur.mipluginhelper.com;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
