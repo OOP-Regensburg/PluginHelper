@@ -3,3 +3,6 @@
 out
 *.iml
 resources
+
+# Test
+log
